@@ -1,3 +1,8 @@
+[![bitHound Overall Score](https://www.bithound.io/github/omelhoro/devshop-ng2/badges/score.svg)](https://www.bithound.io/github/omelhoro/devshop-ng2)
+[![bitHound Dependencies](https://www.bithound.io/github/omelhoro/devshop-ng2/badges/dependencies.svg)](https://www.bithound.io/github/omelhoro/devshop-ng2/master/dependencies/npm)
+
+# The original template
+
 [![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen) [![GitHub version](https://badge.fury.io/gh/angularclass%2Fangular2-webpack-starter.svg)](https://badge.fury.io/gh/angularclass%2Fangular2-webpack-starter) [![Dependency Status](https://david-dm.org/angularclass/angular2-webpack-starter.svg)](https://david-dm.org/angularclass/angular2-webpack-starter)
 [![Issue Stats](http://issuestats.com/github/angularclass/angular2-webpack-starter/badge/pr?style=flat)](http://issuestats.com/github/angularclass/angular2-webpack-starter)
