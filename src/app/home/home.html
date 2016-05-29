@@ -1,0 +1,114 @@
+<div class="card-container">
+  <md-card x-large class="sample-content">Shopping List</md-card>
+
+
+  <md-card>
+    <md-card-title>Listed {{localState.developers.length}} devs</md-card-title>
+    <md-card-content>
+
+      <form (ngSubmit)="importOrg(buffer.lastOrgSearch)" autocomplete="off">
+
+        <md-input placeholder="Import Organization" [value]="buffer.lastOrgSearch" (input)="buffer.lastOrgSearch = $event.target.value" autofocus>
+        </md-input>
+
+        <button class="button-remove" md-mini-fab color="primary">
+          <md-icon>people</md-icon>
+        </button>
+
+      </form>
+
+      <form (ngSubmit)="importUser(buffer.lastUserSearch)" autocomplete="off">
+
+        <md-input placeholder="Import User" [(ngModel)]="buffer.lastUserSearch" autofocus>
+        </md-input>
+
+        <button class="button-remove" md-mini-fab color="primary">
+          <md-icon>person</md-icon>
+        </button>
+      </form>
+
+      <!--
+        <input type="text" [value]="localState.value" s(input)="localState.value = $event.target.value" autofocus>
+        Rather than wiring up two-way data-binding ourselves with [value] and (input)
+        we can use Angular's [(ngModel)] syntax
+        <input type="text" [(ngModel)]="localState.value" autofocus>
+      -->
+
+    </md-card-content>
+  </md-card>
+  <div layout="column" style="display: flex">
+    <div class="shopping-cols">
+      <dev-item *ngFor="let dev of localState.developers" [canOrder]="localState.orderStage === 'choosing'" [dev]="dev">
+      </dev-item>
+    </div>
+
+    <div class="shopping-cols">
+      <button [disabled]="localState.orderStage === 'confirm' || !localState.shoppingcard.length"  (click)="resetCart()" md-raised-button color="accent">
+        Reset cart
+      </button>
+
+      <md-list>
+        <cart-item *ngFor="let dev of localState.shoppingcard" [canOrder]="localState.orderStage === 'choosing'" [dev]="dev">
+        </cart-item>
+
+      </md-list>
+
+
+      <form class="coupon-code" (ngSubmit)="validateCoupon(buffer.coupon)">
+
+        <md-input [disabled]="localState.orderStage === 'confirm'" placeholder="Coupon" [(ngModel)]="buffer.coupon" autofocus>
+        </md-input>
+
+      </form>
+
+      <div [hidden]="!localState.discount" style="margin: 0 auto;">
+        <h2>
+          Discount: - {{localState.discount}}%
+        </h2>
+      </div>
+
+      <h3 >Shopping cart with a value of {{localState.sum | number}}$</h3>
+
+      <button
+        [disabled]="localState.orderStage === 'confirm' || !localState.shoppingcard.length"
+        (click)="goToConfirmOrder()"
+        md-raised-button color="primary" style="margin: 10px">
+        Order
+      </button>
+    </div>
+
+    <div class="shopping-cols">
+
+  <div [hidden]="localState.orderStage !== 'confirm'">
+
+      <button (click)="revertConfirm()" [disabled]="localState.token" md-raised-button color="accent">
+        Revert
+      </button>
+
+        <h2 >
+          Confirm your order of {{localState.sum | number}}$
+        </h2>
+
+      <md-input
+        style="width: 100%"
+        placeholder="Your email for getting the confirmation"
+        [(ngModel)]="buffer.email" autofocus>
+      </md-input>
+
+
+      <div [hidden]="localState.token">
+        <button (click)="confirmOrder()" md-raised-button color="primary">
+          Confirm
+        </button>
+      </div>
+
+      <div [hidden]="!localState.token">
+        <button  (click)="startFromScratch()"  md-raised-button color="primary">
+          Start new shopping tour
+        </button>
+      </div>
+
+    </div>
+    </div>
+
+  </div>

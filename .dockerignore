@@ -1,0 +1,10 @@
+.git/
+node_modules/
+dist/
+task/
+coverage/
+db/
+
+vault/secret
+vault/secret.tar
+.vagrant

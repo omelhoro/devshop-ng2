@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "noEmitHelpers": true
+  },
+  "exclude": [
+    "./node_modules",
+    "./typings/main.d.ts",
+    "./typings/main/**"
+  ],
+  "filesGlob": [
+    "./src/client/**/*.ts",
+    "./src/app/**/*.ts",
+    "!./node_modules/**",
+    "./src/custom-typings.d.ts",
+    "./typings/index.d.ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "resolveGlobs": true,
+    "forkChecker": true,
+    "target": "es6",
+    "useBabel": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": { "rewriteTsconfig": false }
+}

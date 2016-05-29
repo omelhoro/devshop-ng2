@@ -1,0 +1,27 @@
+build:
+  image: node:6
+  commands:
+    -
+deploy:
+  rsync:
+    user: $$PROD_USER
+    host: $$PROD_HOST
+    port: 22
+    source: ./docker-compose.yml
+    target: /tmp/$$COMMIT/
+    delete: false
+    commands:
+      - docker-compose -f /tmp/$$COMMIT/docker-compose.yml pull
+      - VAULT_PASS_DEVSHOP="$$VAULT_PASS_DEVSHOP" docker-compose -f /tmp/$$COMMIT/docker-compose.yml -p devshop-vtex up -d
+    when:
+      branch: master
+
+publish:
+  docker:
+    username: $$DOCKER_USERNAME
+    password: $$DOCKER_PASSWORD
+    email: $$DOCKER_EMAIL
+    storage_driver: vfs
+    repo: omelhoro1/devshop-ng2
+    when:
+      branch: master
