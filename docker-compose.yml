@@ -17,7 +17,7 @@ services:
     networks:
       - proxy-tier
   devshop-vtex-ng2:
-    image: devshop-ng2
+    image: omelhoro1/devshop-ng2
     container_name: devshop-ng2
     ports:
       - "3001:3001"
