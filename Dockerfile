@@ -9,6 +9,6 @@ RUN npm install --loglevel silent
 COPY ./ /app
 RUN npm run build:prod
 
-CMD ["npm","run","server"]
+CMD ["npm","run","server:prod"]
 
 EXPOSE 3001
