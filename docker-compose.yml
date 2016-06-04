@@ -3,6 +3,7 @@ services:
   devshop-vtex:
     image: omelhoro1/devshop-vtex
     container_name: devshop-vtex
+    restart: unless-stopped
     # ports:
     #   - "3000:3000"
     volumes:
@@ -19,8 +20,9 @@ services:
   devshop-vtex-ng2:
     image: omelhoro1/devshop-ng2
     container_name: devshop-ng2
-    ports:
-      - "3001:3001"
+    restart: unless-stopped
+    # ports:
+    #   - "3001:3001"
     environment:
       - VIRTUAL_HOST=devshop-ng2.igor-fischer.rocks
       - LETSENCRYPT_HOST=devshop-ng2.igor-fischer.rocks
