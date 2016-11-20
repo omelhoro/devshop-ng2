@@ -1,5 +1,5 @@
 build:
-  image: node:6
+  image: node
   commands:
     -
 deploy:
