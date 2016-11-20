@@ -25,3 +25,8 @@ publish:
     repo: omelhoro1/devshop-ng2
     when:
       branch: master
+
+cache:
+  mount:
+    - node_modules
+    - .git
